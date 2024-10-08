@@ -1,16 +1,38 @@
-# spider_flutter
+# Spider Example Project
 
-A new Flutter project.
+This project demonstrates the usage of the [`spider`](https://pub.dev/packages/spider) package in a Flutter application. The `spider` package provides a tool to visualize widget tree structures, making it easier for developers to debug and understand the layout and hierarchy of their Flutter applications.
 
-## Getting Started
+## Package Overview
 
-This project is a starting point for a Flutter application.
+**Spider** is a small Dart library designed to automate the generation of Dart code for referencing assets in a Flutter project. It generates a Dart class with static constant variables that map directly to the assets in your project. This method eliminates the risk of string typos when referencing assets and provides IDE auto-complete support, making it very handy when you have a large number of assets to manage.
 
-A few resources to get you started if this is your first Flutter project:
+### Benefits
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Error-Free Asset Reference:** No more typos in asset paths, ensuring reliable referencing.
+- **IDE Auto-Complete Support:** Easily find and reference assets with the help of IDE suggestions.
+- **Simplified Code:** Makes it more readable and cleaner by avoiding the need to manually type out asset paths.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Example
+
+Here’s how you would typically use the `spider` package to reference assets in your project:
+
+#### Before
+
+```dart
+Widget build(BuildContext context) {
+  return Image(image: AssetImage('assets/background.png'));
+}
+```
+
+#### After
+```dart
+Widget build(BuildContext context) {
+  return Image(image: AssetImage(Assets.background));
+}
+```
+#### Generated Assets Class
+```dart
+class Assets {
+  static const String background = 'assets/background.png';
+}
+```
